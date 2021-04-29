@@ -15,21 +15,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<EarthQuake> arrayList = new ArrayList<>();
-        arrayList.add(new EarthQuake("1","A","101010"));
-        arrayList.add(new EarthQuake("2","B","101011"));
-        arrayList.add(new EarthQuake("3","C","101012"));
-        arrayList.add(new EarthQuake("4","D","101013"));
-        arrayList.add(new EarthQuake("1","A","101010"));
-        arrayList.add(new EarthQuake("2","B","101011"));
-        arrayList.add(new EarthQuake("3","C","101012"));
-        arrayList.add(new EarthQuake("4","D","101013"));
-        arrayList.add(new EarthQuake("1","A","101010"));
-        arrayList.add(new EarthQuake("2","B","101011"));
-        arrayList.add(new EarthQuake("3","C","101012"));
-        arrayList.add(new EarthQuake("4","D","101013"));
+//        ArrayList<EarthQuake> arrayList = new ArrayList<>();
+//        arrayList.add(new EarthQuake("1","A","101010"));
+//        arrayList.add(new EarthQuake("2","B","101011"));
+//        arrayList.add(new EarthQuake("3","C","101012"));
+//        arrayList.add(new EarthQuake("4","D","101013"));
+//        arrayList.add(new EarthQuake("1","A","101010"));
+//        arrayList.add(new EarthQuake("2","B","101011"));
+//        arrayList.add(new EarthQuake("3","C","101012"));
+//        arrayList.add(new EarthQuake("4","D","101013"));
+//        arrayList.add(new EarthQuake("1","A","101010"));
+//        arrayList.add(new EarthQuake("2","B","101011"));
+//        arrayList.add(new EarthQuake("3","C","101012"));
+//        arrayList.add(new EarthQuake("4","D","101013"));
 
-        CustoumEQadapter custoumEQadapter = new CustoumEQadapter(this,arrayList);
+        ArrayList<EarthQuake> earthQuakes = QueryUtils.extractEarthquakes();
+
+        CustoumEQadapter custoumEQadapter = new CustoumEQadapter(this,earthQuakes);
         ListView listView = (ListView)findViewById(R.id.list);
         listView.setAdapter(custoumEQadapter);
     }

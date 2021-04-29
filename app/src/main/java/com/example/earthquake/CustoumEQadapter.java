@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class CustoumEQadapter extends ArrayAdapter {
@@ -32,8 +34,24 @@ public class CustoumEQadapter extends ArrayAdapter {
         mag.setText(earthQuake.getMag());
         TextView city = (TextView)listItemView.findViewById(R.id.city);
         city.setText(earthQuake.getCity());
-        TextView date = (TextView)listItemView.findViewById(R.id.date);
-        date.setText(earthQuake.getDate());
+//        TextView date = (TextView)listItemView.findViewById(R.id.date);
+//        date.setText(earthQuake.getDate());
+
+        //Format date and time into readable form
+        long timeInMilliseconds = Long.parseLong(earthQuake.getDate());
+        Date dateObject = new Date(timeInMilliseconds);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM DD, yyyy");
+        String date = simpleDateFormat.format(dateObject);
+        TextView date_tv = (TextView)listItemView.findViewById(R.id.date);
+        date_tv.setText(date);
+
+        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
+        String time = timeFormat.format(dateObject);
+        TextView time_tv = (TextView)listItemView.findViewById(R.id.time);
+        time_tv.setText(time);
+
+
 
         return listItemView;
     }
