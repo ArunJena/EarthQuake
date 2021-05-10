@@ -9,26 +9,59 @@
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:orientation="horizontal"
+       android:padding="16dp"
        tools:ignore="MissingConstraints">
        <TextView
-           android:layout_width="match_parent"
+           android:layout_width="64dp"
+           android:layout_height="64dp"
+           android:id="@+id/mag"
+           android:layout_gravity="center_vertical"
+           android:gravity="center"
+           android:background="@drawable/magnitude_circle"
+           android:textColor="@color/white"/>
+       <LinearLayout
+           android:layout_width="0dp"
            android:layout_height="match_parent"
            android:layout_weight="1"
-           android:id="@+id/mag" />
-       <TextView
-           android:layout_width="match_parent"
+           android:orientation="vertical"
+           android:padding="16dp">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/direction"
+               android:ellipsize="end"
+               android:maxLines="1"
+               android:textSize="12sp"
+               android:textColor="@color/textColorEarthquakeDetails"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/city"
+               android:ellipsize="end"
+               android:maxLines="2"
+               android:text="16sp"
+               android:textColor="@color/textColorEarthquakeLocation"/>
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="0dp"
            android:layout_height="match_parent"
-           android:id="@+id/city"
-           android:layout_weight="1" />
-       <TextView
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:id="@+id/date"
-           android:layout_weight="1"/>
-       <TextView
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:id="@+id/time"
-           android:layout_weight="1"/>
+           android:layout_weight="1"
+           android:orientation="vertical"
+           android:padding="16dp">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/date"
+               android:layout_gravity="end"
+               android:textSize="12sp"
+               android:textColor="@color/textColorEarthquakeDetails"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/time"
+               android:layout_gravity="end"
+               android:textSize="12sp"
+               android:textColor="@color/textColorEarthquakeDetails" />
+       </LinearLayout>
    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

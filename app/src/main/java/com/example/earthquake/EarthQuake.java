@@ -1,21 +1,31 @@
 package com.example.earthquake;
 
 public class EarthQuake {
-    private String mag;
+    private double mag;
     private String city;
     private String date;
+    private String url;
 
-    public EarthQuake(String mag, String city, String date) {
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public EarthQuake(double mag, String city, String date, String url) {
         this.mag = mag;
         this.city = city;
         this.date = date;
+        this.url = url;
     }
 
-    public String getMag() {
+    public double getMag() {
         return mag;
     }
 
-    public void setMag(String mag) {
+    public void setMag(double mag) {
         this.mag = mag;
     }
 

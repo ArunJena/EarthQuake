@@ -2,7 +2,11 @@ package com.example.earthquake;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -31,8 +35,19 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<EarthQuake> earthQuakes = QueryUtils.extractEarthquakes();
 
-        CustoumEQadapter custoumEQadapter = new CustoumEQadapter(this,earthQuakes);
+        final CustoumEQadapter custoumEQadapter = new CustoumEQadapter(this,earthQuakes);
         ListView listView = (ListView)findViewById(R.id.list);
         listView.setAdapter(custoumEQadapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                EarthQuake current = earthQuakes.get(position);
+                String url = current.getUrl();
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
     }
 }
