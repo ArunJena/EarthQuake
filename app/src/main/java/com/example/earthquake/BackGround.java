@@ -32,53 +32,12 @@ import java.util.ArrayList;
         protected void onPostExecute(Void aVoid) {
             ArrayList<EarthQuake> earthQuakes = QueryUtils.extractEarthquakes(jsonString);
 
-            final CustoumEQadapter custoumEQadapter = new CustoumEQadapter(ctx,earthQuakes);
-            listView.setAdapter(custoumEQadapter);
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    EarthQuake current = earthQuakes.get(position);
-                    String url = current.getUrl();
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse(url));
-                    ctx.startActivity(i);
-                }
-            });
-            Log.i("onPostExecute","Our jsonString is "+jsonString);
-            super.onPostExecute(aVoid);
         }
 
         @Override
         protected Void doInBackground(String... strings) {
-            String urlString = strings[0];
-            URL url = null;
-            HttpURLConnection httpURLConnection=null;
-            InputStream inputStream=null;
 
-            try {
-                url=new URL(urlString);
-                httpURLConnection = (HttpURLConnection)url.openConnection();
-                httpURLConnection.setReadTimeout(10000 /* milliseconds */);
-                httpURLConnection.setConnectTimeout(15000 /* milliseconds */);
-                httpURLConnection.setRequestMethod("GET");
-                httpURLConnection.connect();
-//
-//                if(httpURLConnection.getResponseCode()==200)
-//                    Log.i("MainActivity","We got response code as "+httpURLConnection.getResponseCode());
-                inputStream=httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-                String line = bufferedReader.readLine();
-                StringBuilder stringBuilder = new StringBuilder();
-                while(line!=null){
-                    stringBuilder.append(line);
-                    line=bufferedReader.readLine();
-                }
-                jsonString = stringBuilder.toString();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
             return null;
         }
     }
